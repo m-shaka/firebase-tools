@@ -1,0 +1,9 @@
+version: '3'
+services:
+  firebase_emulator:
+    build: .
+    volumes:
+      - ./firebase.json:/firebase.json:ro
+      - ./.firebaserc:/.firebaserc:ro
+      - /firebase-export
+    command: ["emulators:exec", "--export-on-exit", "--import", "/firebase-export", "'exit 1'"]
